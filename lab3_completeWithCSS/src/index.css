@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+button {
+  @apply bg-amber-300 text-black rounded-lg p-2 hover:bg-amber-400 w-24 justify-center justify-self-center;
+}
+
+input {
+  @apply border-2 border-blue-400 rounded-lg p-1;
+}
+
+table {
+  @apply table-auto w-full border-2 border-blue-400 rounded-lg p-1 border-separate border-spacing-y-3;
+}
+
+dialog {
+  @apply absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 border-2 rounded-lg p-2;
+}
+
+.readonly {
+  @apply text-gray-500 p-1;
+}
+
+.singleCol {
+  @apply grid grid-cols-[50] justify-center text-left gap-4;
+}
+
+.errorMessage {
+  @apply grid grid-cols-[50] justify-center text-red-600 font-bold text-left gap-4;
+}
