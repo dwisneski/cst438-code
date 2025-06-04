@@ -13,97 +13,53 @@ import java.util.stream.Stream;
 
 @RestController
 public class CustomerController {
-    private final CustomerRepository customerRepository;
-    private final OrderRepository orderRepository;
-
-    public CustomerController(
-            CustomerRepository customerRepository,
-            OrderRepository orderRepository ) {
-        this.customerRepository = customerRepository;
-        this.orderRepository = orderRepository;
-    }
+ 
+ // define variables for CustomerRepository, OrderRepository
+ 
+ // use constructor injection to set values
 
 
     @GetMapping("/login")
     public CustomerDTO login(@RequestBody CustomerDTO dto) {
-        System.out.println("login authentication "+dto.email());
 		// TBD login method will be updated later for security 
-        Customer c = customerRepository.findCustomerByEmail(dto.email());
-        if (c==null || !c.getPassword().equals(dto.password())) {
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "email or password incorrect");
-        }
-        return new CustomerDTO(c.getCustId(), c.getName(), c.getEmail(), null, null);
+        return null;
     }
 
 
     @PostMapping("/register")
     public CustomerDTO register(@RequestBody CustomerDTO dto) {
-        Customer c = customerRepository.findCustomerByEmail(dto.email());
-        if (c!=null) {
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "email already in use");
-        }
-        c = new Customer();
-        c.setEmail(dto.email());
-        c.setName(dto.name());
-        c.setPassword(dto.password()); // TBD encrypt password for security
-        customerRepository.save(c);
-        dto = new CustomerDTO(c.getCustId(), c.getName(), c.getEmail(), null, null);
-        return dto;
+		// check that customer email does not already exist
+		// if so throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "email already in use");
+       
+	   // create customer entity, set fields and save to database
+	   
+	   // return CustomerDTO with id, name, email
+      return null;
     }
 
     @GetMapping("/customers/{id}/orders")
-    public Stream<OrderDTO> getOrders(@PathVariable("id") int custId ) {
-        List<Order> orders = customerRepository.findOrdersByCustomerOrderByDateDesc(custId);
-        return orders.stream().map(order -> new OrderDTO(
-                order.getOrderId(),
-                order.getOrderDate(),
-                order.getItem(),
-                order.getQuantity(),
-                order.getPrice()));
+    public Stream<OrderDTO> getOrders(@PathVariable("id") int customerId ) {
+		// return the orders for a customer
+		
+        return null;
     }
 
     @PostMapping("/customers/{id}/orders")
-    public OrderDTO placeOrder(@RequestBody OrderDTO dto, @PathVariable("id") int custId) {
-        Customer c = customerRepository.findById(custId).orElse(null);
-        if (c==null)
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "customer invalid");
-        Order order = new Order();
-        order.setCustomer(c);
-        order.setOrderDate(Date.valueOf(LocalDate.now()) );
-        order.setItem(dto.item());
-        order.setQuantity(dto.quantity());
-        order.setPrice(dto.price());
-        orderRepository.save(order);
-        return new OrderDTO(
-                order.getOrderId(),
-                order.getOrderDate(),
-                order.getItem(),
-                order.getQuantity(),
-                order.getPrice());
+    public OrderDTO placeOrder(@RequestBody OrderDTO dto, @PathVariable("id") int customerId) {
+        // verify customerId
+		// create Order entity and save
+		return null;
     }
 
     @PutMapping("/orders")
     public OrderDTO updateOrder(@RequestBody OrderDTO dto) {
-        Order order = orderRepository.findById(dto.orderId()).orElse(null);
-        // order not found, does not belong to user --> error
-        if (order == null )
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST, "orderId invalid");
-        // sanitize item
-        order.setItem(dto.item());
-        order.setQuantity(dto.quantity());
-        order.setPrice(dto.price());
-        orderRepository.save(order);
-        return new OrderDTO(
-                order.getOrderId(),
-                order.getOrderDate(),
-                order.getItem(),
-                order.getQuantity(),
-                order.getPrice());
+        // find and update Order entity
+		return null;
     }
 
     @DeleteMapping("/orders/{orderId}")
     public void deleteOrder(@PathVariable("orderId") int orderId) {
-        orderRepository.deleteById(orderId);
+        // delete Order entity
 	}
 
 }
