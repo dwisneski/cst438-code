@@ -32,10 +32,10 @@ export const AppLayout = () => {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link> &nbsp;|&nbsp;
-        <Link to="/register">Register</Link>&nbsp;|&nbsp;
-        <Link to="/order">Order</Link>&nbsp;|&nbsp;
-        <Link to="/history">Order History</Link>
+        <Link id="home" to="/">Home</Link> &nbsp;|&nbsp;
+        <Link id="register" to="/register">Register</Link>&nbsp;|&nbsp;
+        <Link id="order" to="/order">Order</Link>&nbsp;|&nbsp;
+        <Link id="history" to="/history">Order History</Link>
       </nav>
       <Outlet />
     </>

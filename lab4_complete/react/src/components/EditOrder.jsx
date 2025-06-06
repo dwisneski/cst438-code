@@ -34,7 +34,6 @@ function EditOrder({ editOrder, refresh }) {
 
         if (response.ok) {
             const data = await response.json();
-            alert("Order updated order id " + data.orderId);
             setMessage([]);
             refresh();
             onClose();
@@ -56,11 +55,11 @@ function EditOrder({ editOrder, refresh }) {
                 {message}
                 <input type="text" name="orderId" value={order.orderId} readOnly />
                 <input type="text" name="orderDate" value={order.orderDate} readOnly />
-                <input type="text" name="item" placeholder="item" value={order.item} onChange={onChange} />
-                <input type="number" name="quantity" placeholder="quantity" value={order.quantity} onChange={onChange} />
-                <input type="number" name="price" placeholder="price" value={order.price} onChange={onChange} />
-                <button onClick={onSave}>save</button>
-                <button onClick={onClose}>close</button>
+                <input id="item" type="text" name="item" placeholder="item" value={order.item} onChange={onChange} />
+                <input id="quantity" type="number" name="quantity" placeholder="quantity" value={order.quantity} onChange={onChange} />
+                <input id="price" type="number" name="price" placeholder="price" value={order.price} onChange={onChange} />
+                <button id="saveButton" onClick={onSave}>save</button>
+                <button id="closeButton" onClick={onClose}>close</button>
             </dialog>
         </>
     );

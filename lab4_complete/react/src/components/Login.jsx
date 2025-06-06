@@ -33,9 +33,9 @@ function Login() {
         <div >
             <h2>Login</h2>
             <div>
-                <input type="email" name="email" placeholder="email" onChange={onChange} />
-                <input type="password" name="password" placeholder="password" onChange={onChange} />
-                <button onClick={submit}>Login</button>
+                <input id="email" type="email" name="email" placeholder="email" onChange={onChange} />
+                <input id="password" type="password" name="password" placeholder="password" onChange={onChange} />
+                <button id="loginButton" onClick={submit}>Login</button>
             </div>
         </div>
     )

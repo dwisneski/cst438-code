@@ -40,10 +40,10 @@ function Order() {
         <>
             <h2>Order</h2>
             {message}
-            <input type="text" name="item" placeholder="item" onChange={onChange} />
-            <input type="number" name="quantity" placeholder="quantity" onChange={onChange} />
-            <input type="number" name="price" placeholder="price" onChange={onChange} />
-            <button onClick={onClick}>order</button>
+            <input id="item" type="text" name="item" placeholder="item" onChange={onChange} />
+            <input id="quantity" type="number" name="quantity" placeholder="quantity" onChange={onChange} />
+            <input id="price" type="number" name="price" placeholder="price" onChange={onChange} />
+            <button id="orderButton" onClick={onClick}>order</button>
         </>
     );
 }

@@ -34,10 +34,10 @@ function Register() {
     return (
         <>
             <h2>Register as new customer</h2>
-            <input type="text" name="name" placeholder="name" value={customer.name} onChange={changeValue} />
-            <input type="email" name="email" placeholder="email" value={customer.email} onChange={changeValue} />
-            <input type="password" name="password" placeholder="password" value={customer.password} onChange={changeValue} />
-            <button onClick={onClick}>Register</button>
+            <input id="name" type="text" name="name" placeholder="name" value={customer.name} onChange={changeValue} />
+            <input id="email" type="email" name="email" placeholder="email" value={customer.email} onChange={changeValue} />
+            <input id="password" type="password" name="password" placeholder="password" value={customer.password} onChange={changeValue} />
+            <button id="registerButton" onClick={onClick}>Register</button>
         </>
     )
 
